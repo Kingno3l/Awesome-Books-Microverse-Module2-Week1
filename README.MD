@@ -17,6 +17,7 @@
   - [Clone](#clone)
   - [Run](#run)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🙏 Acknowledgements](#acknowledgements)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -63,6 +64,17 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@Kingno3l](https://github.com/kingno3l)
 - LinkedIn: [King Immanuel](https://linkedin.com/in/kingno3l)
+
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+> Features to add to the project.
+
+- [ ] **[ Complete website with working navigation.]**
+- [ ] **[ Manage books collection ]**
+- [ ] **[ Create a complete website with navigation. ]**
 
 
 ## 🤝 Contributing
