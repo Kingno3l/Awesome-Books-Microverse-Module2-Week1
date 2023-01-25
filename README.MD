@@ -101,6 +101,6 @@ If you like this project give me star!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/Kingno3l/Awesome-Books-Microverse-Module2-Week1/blob/added-readme-file/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
