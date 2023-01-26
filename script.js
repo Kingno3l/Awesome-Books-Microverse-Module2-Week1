@@ -1,6 +1,4 @@
 const form = document.querySelector('form');
-const listall = document.getElementsByClassName('listall')[0];
-
 const addBook = (ev) => {
   ev.preventDefault();
   const books = [{
@@ -21,19 +19,21 @@ const addBook = (ev) => {
     buttonRemove.dataset.id = book.id;
     const itemP1 = document.createElement('p');
     const itemP2 = document.createElement('p');
-    const itemP1Text = document.createTextNode(book.title);
-    const itemP2Text = document.createTextNode(book.author);
-
-    itemP2.appendChild(itemP2Text);
+    const itemP1Text = document.createTextNode(book.author);
+    const itemP2Text = document.createTextNode(book.title);
     itemP1.appendChild(itemP1Text);
+    itemP2.appendChild(itemP2Text);
     container.appendChild(itemP1);
     container.appendChild(itemP2);
     container.appendChild(buttonRemove);
     container.appendChild(itemHR);
+
+    let listall;
     listall.appendChild(container);
   });
 };
-
+const listall = document.getElementsByClassName('listall')[0];
+console.log(listall);
 listall.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn')) {
     const bookId = e.target.dataset.id;
