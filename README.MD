@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+ <!-- <img src="murple_logo.png" alt="logo" width="140"  height="auto" /> -->
   <br/>
 
   <!-- TABLE OF CONTENTS -->
@@ -17,6 +17,7 @@
   - [Clone](#clone)
   - [Run](#run)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🙏 Acknowledgements](#acknowledgements)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
@@ -65,6 +66,17 @@ To get a local copy up and running follow these simple example steps.
 - LinkedIn: [King Immanuel](https://linkedin.com/in/kingno3l)
 
 
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+> Features to add to the project.
+
+- [ ] **[ Complete website with working navigation.]**
+- [ ] **[ Manage books collection ]**
+- [ ] **[ Create a complete website with navigation. ]**
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
@@ -89,6 +101,6 @@ If you like this project give me star!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/Kingno3l/Awesome-Books-Microverse-Module2-Week1/blob/added-readme-file/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
