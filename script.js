@@ -33,7 +33,7 @@ const addBook = (ev) => {
     listall.appendChild(container);
   });
 };
-// console.log(listall);
+
 listall.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn')) {
     const bookId = e.target.dataset.id;
