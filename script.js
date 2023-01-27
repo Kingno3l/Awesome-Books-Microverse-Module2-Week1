@@ -1,45 +1,56 @@
-const form = document.querySelector('form');
-const listall = document.getElementsByClassName('listall')[0];
+class Book {
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+  }
 
-const addBook = (ev) => {
-  ev.preventDefault();
-  const books = [{
-    id: Math.random() * 10000000,
-    title: document.getElementById('title').value,
-    author: document.getElementById('author').value,
-  }];
-    // clear the form for next entry...
-  form.reset();
-  books.forEach((book) => {
+  addBook() {
     const container = document.createElement('div');
     container.className = 'book-container';
-    container.dataset.id = book.id;
-    const itemHR = document.createElement('hr');
+    container.dataset.id = this.id;
+
     const buttonRemove = document.createElement('button');
     buttonRemove.className = 'btn';
     buttonRemove.innerHTML = 'remove';
-    buttonRemove.dataset.id = book.id;
-    const itemP1 = document.createElement('p');
-    const itemP2 = document.createElement('p');
-    const itemP1Text = document.createTextNode(book.title);
-    const itemP2Text = document.createTextNode(book.author);
+    buttonRemove.dataset.id = this.id;
+    const itemP1 = document.createElement('li');
 
-    itemP2.appendChild(itemP2Text);
+    const itemP1Text = document.createTextNode(`"${this.title}" by ${this.author}`);
+
     itemP1.appendChild(itemP1Text);
+
     container.appendChild(itemP1);
-    container.appendChild(itemP2);
+
     container.appendChild(buttonRemove);
-    container.appendChild(itemHR);
+    const listall = document.getElementsByClassName('listall')[0];
 
     listall.appendChild(container);
-  });
+  }
+
+  removeBook() {
+    const bookContainer = document.querySelector(`div[data-id="${this.id}"]`);
+    bookContainer.remove();
+  }
+}
+const form = document.querySelector('form');
+const addBook = (ev) => {
+  ev.preventDefault();
+  const id = Math.random() * 10000000;
+  const title = document.getElementById('title').value;
+  const author = document.getElementById('author').value;
+  const book = new Book(id, title, author);
+  book.addBook();
+  // clear the form for next entry...
+  form.reset();
 };
-// console.log(listall);
+const listall = document.getElementsByClassName('listall')[0];
+
 listall.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn')) {
     const bookId = e.target.dataset.id;
-    const bookContainer = document.querySelector(`div[data-id="${bookId}"]`);
-    bookContainer.remove();
+    const book = new Book(bookId);
+    book.removeBook();
   }
 });
 document.addEventListener('DOMContentLoaded', () => {
