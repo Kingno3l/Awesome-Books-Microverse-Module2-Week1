@@ -48,3 +48,30 @@ form input{
     outline: none;
     cursor: pointer;
 }
+
+.book-container{
+    width: 500px;
+    margin-top: 50px;
+    display: flex;
+}
+
+li{
+    width: 100%;
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 5px;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    margin: 5px 0;
+    box-shadow: -3px 6px 4px #222;
+}
+
+.btn{
+    height: 40px;
+    background-color: red;
+    position: relative;
+    width: 50px;
+    top: 5px;
+}
