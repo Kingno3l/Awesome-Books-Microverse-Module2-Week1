@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-body {
+.flex-body {
   min-height: 100vh;
   background: linear-gradient(65deg, rgb(181, 41, 231), rgb(216, 43, 43));
   display: flex;
@@ -54,7 +54,7 @@ form input {
   display: flex;
 }
 
-li {
+.listall li {
   width: 100%;
   background: #fff;
   height: 40px;
@@ -74,3 +74,53 @@ li {
   width: 50px;
   top: 5px;
 }
+
+header {
+    background-color: white;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  a {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  
+  nav {
+    min-height: 70px;
+
+    display: flex;
+    justify-content: space-evenly;
+   align-items: center;
+    padding: 0 24px;
+  }
+  
+  .nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+  }
+  
+  .nav-branding {
+    font-size: 2rem;
+  }
+  
+  .nav-link {
+    transition: 0.7s ease;
+  }
+  
+  .nav-link:hover {
+    color: red;
+  }
+  
+  .nav-link:active {
+    color: red;
+  }
+
+  #date{
+    color: white;
+  }

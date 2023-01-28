@@ -56,3 +56,13 @@ listall.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn').addEventListener('click', addBook);
 });
+
+function displayDate() {
+  const date = document.getElementById("date");
+  date.innerHTML = Date();
+
+  setInterval(displayDate, 1000)
+}
+
+
+displayDate(date);
