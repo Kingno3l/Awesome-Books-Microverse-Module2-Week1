@@ -87,6 +87,7 @@ header {
     color: black;
     text-decoration: none;
     text-transform: capitalize;
+    cursor: pointer;
   }
   
   nav {
@@ -124,3 +125,13 @@ header {
   #date{
     color: white;
   }
+
+  #all-book{
+    display: none;
+  }
+
+  #contactbody{
+    display: none;
+  }
+
+  
