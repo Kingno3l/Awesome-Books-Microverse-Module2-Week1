@@ -57,41 +57,39 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn').addEventListener('click', addBook);
 });
 
+const date = document.getElementById('date');
+
 function displayDate() {
-  const date = document.getElementById("date");
+  const date = document.getElementById('date');
   date.innerHTML = Date();
 
-  setInterval(displayDate, 1000)
+  setInterval(displayDate, 1000);
 }
 
 displayDate(date);
 
-const allbook = document.getElementById("all-book");
-const addbook2 = document.getElementById("add-book");
-const contact = document.getElementById("contactbody");
+const allbook = document.getElementById('all-book');
+const addbook2 = document.getElementById('add-book');
+const contact = document.getElementById('contactbody');
 
-const list = document.getElementById("list");
-const add = document.getElementById("add");
-const contactlink = document.getElementById("contact");
+const list = document.getElementById('list');
+const add = document.getElementById('add');
+const contactlink = document.getElementById('contact');
 
+add.addEventListener('click', () => {
+  addbook2.style.display = 'block';
+  allbook.style.display = 'none';
+  contact.style.display = 'none';
+});
 
+list.addEventListener('click', () => {
+  allbook.style.display = 'block';
+  addbook2.style.display = 'none';
+  contact.style.display = 'none';
+});
 
-add.addEventListener('click', () =>{
-  addbook2.style.display = "block";
-  allbook.style.display = "none";
-  contact.style.display = "none";
-}) ;
-
-list.addEventListener('click', () =>{
-  allbook.style.display = "block";
-  addbook2.style.display = "none";
-  contact.style.display = "none";
-}) ;
-
-contactlink.addEventListener('click', () =>{
-  contact.style.display = "block";
-  allbook.style.display = "none";
-  addbook2.style.display = "none";
-}) ;
-
-
+contactlink.addEventListener('click', () => {
+  contact.style.display = 'block';
+  allbook.style.display = 'none';
+  addbook2.style.display = 'none';
+});

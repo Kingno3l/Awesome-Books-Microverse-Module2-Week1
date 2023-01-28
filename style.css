@@ -54,6 +54,10 @@ form input {
   display: flex;
 }
 
+li {
+  list-style: none;
+}
+
 .listall li {
   width: 100%;
   background: #fff;
@@ -76,62 +80,55 @@ form input {
 }
 
 header {
-    background-color: white;
-  }
-  
-  li {
-    list-style: none;
-  }
-  
-  a {
-    color: black;
-    text-decoration: none;
-    text-transform: capitalize;
-    cursor: pointer;
-  }
-  
-  nav {
-    min-height: 70px;
+  background-color: white;
+}
 
-    display: flex;
-    justify-content: space-evenly;
-   align-items: center;
-    padding: 0 24px;
-  }
-  
-  .nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 80px;
-  }
-  
-  .nav-branding {
-    font-size: 2rem;
-  }
-  
-  .nav-link {
-    transition: 0.7s ease;
-  }
-  
-  .nav-link:hover {
-    color: red;
-  }
-  
-  .nav-link:active {
-    color: red;
-  }
+a {
+  color: black;
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+}
 
-  #date{
-    color: white;
-  }
+nav {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 24px;
+}
 
-  #all-book{
-    display: none;
-  }
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
 
-  #contactbody{
-    display: none;
-  }
+.nav-branding {
+  font-size: 2rem;
+}
 
-  
+.nav-link {
+  transition: 0.7s ease;
+}
+
+.nav-link:hover {
+  color: red;
+}
+
+.nav-link:active {
+  color: red;
+}
+
+#date {
+  color: white;
+}
+
+#all-book {
+  display: none;
+}
+
+#contactbody {
+  display: none;
+}
