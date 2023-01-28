@@ -1,58 +1,80 @@
+const listall = document.querySelector('.listall')
 class Book {
-  constructor(id, title, author) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-  }
+    constructor(id, title, author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 
-  addBook() {
-    const container = document.createElement('div');
-    container.className = 'book-container';
-    container.dataset.id = this.id;
+    static displayBooks() {
+        const books = Book.getBooks();
+        books.forEach((book) => Book.addBookToList(book));
+    }
 
-    const buttonRemove = document.createElement('button');
-    buttonRemove.className = 'btn';
-    buttonRemove.innerHTML = 'remove';
-    buttonRemove.dataset.id = this.id;
-    const itemP1 = document.createElement('li');
+    static addBookToList(book) {
+        const row = document.createElement('tr');
 
-    const itemP1Text = document.createTextNode(`"${this.title}" by ${this.author}`);
+        row.innerHTML = `
+        <td>"${book.title}"  by  ${book.author}</td>
+        <td class="d-none">${book.author}</td>
+        <td><a href="#" class="btn btn-sm btn-danger delete float-end">Remove</a></td>
+        `;
+        listall.appendChild(row);
+    }
 
-    itemP1.appendChild(itemP1Text);
+      static deleteBook(el) {
+        if (el.classList.contains('btn')) {
+          el.parentElement.parentElement.remove();
+        }
+      }
 
-    container.appendChild(itemP1);
+      static clearField() {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+      }
 
-    container.appendChild(buttonRemove);
-    const listall = document.getElementsByClassName('listall')[0];
+      static getBooks() {
+        let books;
+        if (localStorage.getItem('books') === null) {
+          books = [];
+        } else {
+          books = JSON.parse(localStorage.getItem('books'));
+        }
+        return books;
+      }
 
-    listall.appendChild(container);
-  }
+      static addBook(book) {
+        const books = Book.getBooks();
+        books.push(book);
+        localStorage.setItem('books', JSON.stringify(books));
+      }
 
-  removeBook() {
-    const bookContainer = document.querySelector(`div[data-id="${this.id}"]`);
-    bookContainer.remove();
-  }
+      static removeBook(author) {
+        const books = Book.getBooks();
+        let index = 0;
+        books.filter((book) => {
+          if (book.author !== author) { index = +1; }
+          return books;
+        });
+        books.splice(index, 1);
+        localStorage.setItem('books', JSON.stringify(books));
+      }
 }
-const form = document.querySelector('form');
-const addBook = (ev) => {
-  ev.preventDefault();
-  const id = Math.random() * 10000000;
-  const title = document.getElementById('title').value;
-  const author = document.getElementById('author').value;
-  const book = new Book(id, title, author);
-  book.addBook();
-  // clear the form for next entry...
-  form.reset();
-};
-const listall = document.getElementsByClassName('listall')[0];
 
-listall.addEventListener('click', (e) => {
-  if (e.target.classList.contains('btn')) {
-    const bookId = e.target.dataset.id;
-    const book = new Book(bookId);
-    book.removeBook();
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btn').addEventListener('click', addBook);
-});
+let form = document.querySelector('form')
+form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    let id = Math.random() * 10000000;
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let book = new Book(id, title, author);
+    Book.addBookToList(book);
+  Book.addBook(book);
+  Book.clearField();
+})
+
+document.addEventListener('DOMContentLoaded', Book.displayBooks);
+document.querySelector('.listall').addEventListener('click', (e) => {
+    Book.removeBook(e.target.parentElement.previousElementSibling.innerHTML);
+    Book.deleteBook(e.target);
+  });
