@@ -1,47 +1,80 @@
-const form = document.querySelector('form');
-const listall = document.getElementsByClassName('listall')[0];
+const listall = document.querySelector('.listall')
+class Book {
+    constructor(id, title, author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 
-const addBook = (ev) => {
-  ev.preventDefault();
-  const books = [{
-    id: Math.random() * 10000000,
-    title: document.getElementById('title').value,
-    author: document.getElementById('author').value,
-  }];
-    // clear the form for next entry...
-  form.reset();
-  books.forEach((book) => {
-    const container = document.createElement('div');
-    container.className = 'book-container';
-    container.dataset.id = book.id;
-    const itemHR = document.createElement('hr');
-    const buttonRemove = document.createElement('button');
-    buttonRemove.className = 'btn';
-    buttonRemove.innerHTML = 'remove';
-    buttonRemove.dataset.id = book.id;
-    const itemP1 = document.createElement('p');
-    const itemP2 = document.createElement('p');
-    const itemP1Text = document.createTextNode(book.title);
-    const itemP2Text = document.createTextNode(book.author);
+    static displayBooks() {
+        const books = Book.getBooks();
+        books.forEach((book) => Book.addBookToList(book));
+    }
 
-    itemP2.appendChild(itemP2Text);
-    itemP1.appendChild(itemP1Text);
-    container.appendChild(itemP1);
-    container.appendChild(itemP2);
-    container.appendChild(buttonRemove);
-    container.appendChild(itemHR);
+    static addBookToList(book) {
+        const row = document.createElement('tr');
 
-    listall.appendChild(container);
+        row.innerHTML = `
+        <td>"${book.title}"  by  ${book.author}</td>
+        <td class="d-none">${book.author}</td>
+        <td><a href="#" class="btn btn-sm btn-danger delete float-end">Remove</a></td>
+        `;
+        listall.appendChild(row);
+    }
+
+      static deleteBook(el) {
+        if (el.classList.contains('btn')) {
+          el.parentElement.parentElement.remove();
+        }
+      }
+
+      static clearField() {
+        document.querySelector('#title').value = '';
+        document.querySelector('#author').value = '';
+      }
+
+      static getBooks() {
+        let books;
+        if (localStorage.getItem('books') === null) {
+          books = [];
+        } else {
+          books = JSON.parse(localStorage.getItem('books'));
+        }
+        return books;
+      }
+
+      static addBook(book) {
+        const books = Book.getBooks();
+        books.push(book);
+        localStorage.setItem('books', JSON.stringify(books));
+      }
+
+      static removeBook(author) {
+        const books = Book.getBooks();
+        let index = 0;
+        books.filter((book) => {
+          if (book.author !== author) { index = +1; }
+          return books;
+        });
+        books.splice(index, 1);
+        localStorage.setItem('books', JSON.stringify(books));
+      }
+}
+
+let form = document.querySelector('form')
+form.addEventListener('submit', (ev) => {
+    ev.preventDefault();
+    let id = Math.random() * 10000000;
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let book = new Book(id, title, author);
+    Book.addBookToList(book);
+  Book.addBook(book);
+  Book.clearField();
+})
+
+document.addEventListener('DOMContentLoaded', Book.displayBooks);
+document.querySelector('.listall').addEventListener('click', (e) => {
+    Book.removeBook(e.target.parentElement.previousElementSibling.innerHTML);
+    Book.deleteBook(e.target);
   });
-};
-// console.log(listall);
-listall.addEventListener('click', (e) => {
-  if (e.target.classList.contains('btn')) {
-    const bookId = e.target.dataset.id;
-    const bookContainer = document.querySelector(`div[data-id="${bookId}"]`);
-    bookContainer.remove();
-  }
-});
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('btn').addEventListener('click', addBook);
-});
